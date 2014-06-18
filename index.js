@@ -1,15 +1,14 @@
 (function() {
-  var _
-    , toString = Object.prototype.toString
+  var toString = Object.prototype.toString
     , __slice = [].slice
     , data
     , flash
     , wrapper
-    , memoried;
-
-  _.isFunction = function(value) {
-    return toString.call(value) == '[object Object]';
-  };
+    , wrapperSync
+    , memoried
+    , isFunction = function(value) {
+      return toString.call(value) == '[object Function]';
+    };
 
   data = {};
 
@@ -55,9 +54,10 @@
   wrapperSync = function(key, func, life, bind) {
     var regxp = /\{(\d+)\}/g
       , keyReplace = regxp.test(key);
+    console.log('wrapperSync');
     return function() {
       var cacheKey
-        , args = __slice.call(arguments, 0) : [];
+        , args = arguments.length ? __slice.call(arguments, 0) : []
         , ret;
       if (keyReplace) {
         cacheKey = key.replace(/\{(\d+)\}/g, function(m, i) {
@@ -81,7 +81,7 @@
       , keyReplace = regxp.test(key);
     return function() {
       var cacheKey
-        , args = __slice.call(arguments, 0) : [];
+        , args = arguments.length ? __slice.call(arguments, 0) : []
         , ret
         , callback = args.pop();
       if (keyReplace) {
@@ -108,13 +108,14 @@
 
   memoried = function(key, value, life, opts) {
     var len = arguments.length
-      , bind = opts && (opts.bind || this);
+      , bind;
 
     if (len === 0) {
-      throw Error 'argument Error, must has argument 1 more'
+      throw Error('argument Error, must has argument 1 more');
     } else if (arguments.length === 1) {
       return flash.get(key);
-    } else if (_.isFunction(value)) {
+    } else if (isFunction(value)) {
+      bind = opts && (opts.bind || this);
       if (opts.sync) {
         return wrapperSync(key, value, life, bind);
       } else {
