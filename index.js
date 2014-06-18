@@ -61,7 +61,6 @@
   wrapperSync = function(key, func, life, bind) {
     var regxp = /\{(\d+)\}/g
       , keyReplace = regxp.test(key);
-    console.log('wrapperSync');
     return function() {
       var cacheKey
         , args = arguments.length ? __slice.call(arguments, 0) : []
@@ -115,7 +114,8 @@
 
   memoried = function(key, value, life, opts) {
     var len = arguments.length
-      , bind;
+      , bind
+      , opts = opts || {};
 
     if (len === 0) {
       throw Error('argument Error, must has argument 1 more');
