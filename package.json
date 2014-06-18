@@ -1,6 +1,6 @@
 {
   "name": "memoried",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "js memory cache, support function (async or sync), object, string base on javascript memory variable, It work browser and node.js platform.",
   "main": "index.js",
   "scripts": {
