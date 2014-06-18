@@ -14,16 +14,44 @@ var memoried = require('memoried');
 ````
 
 ### API
-check this file: `index.js`
 
-### Contributing
-- Fork this repo
-- Clone your repo
-- Install dependencies
-- Checkout a feature branch
-- Feel free to add your features
-- Make sure your features are fully tested
-- Open a pull request, and enjoy <3
+## memoried
+
+<pre>
+var memoried = require('memoried');
+memoried(key, value, life, opts);
+
+// case1 get reture from memory-cache
+// only one argument key, key must be a string
+// return null when cache noexists
+var res = memoried(key);
+
+// case2 set a value(string, number, object or array) in memory-cache
+// value is not function
+// life is a seconds, cache expired = Date.now() + life * 1000
+memoried(key, value, 1800);
+
+// case3 memoried one function
+// values is a function
+// life is a seconds, This is expired who memoried function exec return
+// opts optinal
+// opts.bind function exec bind
+// opts.sync sync or async default async
+// when async callback must be
+// function(error, result) {}
+// return memoried function
+memoriedFn = memoried('key{0}-{1}', function(a, b) {
+  // do some things
+  return Date.now();
+}, 1800);
+
+// each time same result
+// because fn return has been cached
+memoriedFn(1, 2);
+memoriedFn(1, 2);
+memoriedFn(1, 2);
+</pre>
+
 
 ### MIT license
 Copyright (c) 2014 13740080@qq.com

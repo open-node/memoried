@@ -1,3 +1,10 @@
+/**
+ * memoried 0.1.0
+ * https://github.com/open-node/memoried
+ * (c) 2014-2014 Redston Zhao code, document
+ * Underscore may be freely distributed under the MIT license.
+ */
+
 (function() {
   var toString = Object.prototype.toString
     , __slice = [].slice
