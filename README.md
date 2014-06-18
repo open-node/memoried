@@ -43,13 +43,35 @@ memoried(key, value, 1800);
 memoriedFn = memoried('key{0}-{1}', function(a, b) {
   // do some things
   return Date.now();
-}, 1800);
+}, 1800, {sync: true});
 
 // each time same result
 // because fn return has been cached
 memoriedFn(1, 2);
 memoriedFn(1, 2);
 memoriedFn(1, 2);
+
+//async function memoried
+func = function(a, b, callback) {
+  doSomeThing(function() {
+    callback(error, result);
+  });
+};
+
+memoriedFn = memoried('func-key{0}-{1}', func, 1800, {sync: false, bind: this});
+
+// each time same result
+// because fn return has been cached
+memoriedFn(1, 3, function(error, result) {
+  console.log(result);
+});
+memoriedFn(1, 3, function(error, result) {
+  console.log(result);
+});
+memoriedFn(1, 3, function(error, result) {
+  console.log(result);
+});
+
 </pre>
 
 
