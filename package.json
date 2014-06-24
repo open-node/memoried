@@ -1,6 +1,6 @@
 {
   "name": "memoried",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "js memory cache, support function (async or sync), object, string base on javascript memory variable, It work browser and node.js platform.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:stonephp/memoried.git"
+    "url": "git@github.com:open-node/memoried.git"
   },
   "keywords": [
     "memory",
@@ -19,7 +19,7 @@
   "author": "13740080@qq.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/stonephp/memoried/issues"
+    "url": "https://github.com/open-node/memoried/issues"
   },
-  "homepage": "https://github.com/stonephp/memoried"
+  "homepage": "https://github.com/open-node/memoried"
 }
